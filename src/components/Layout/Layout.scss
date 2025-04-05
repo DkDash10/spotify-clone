@@ -1,0 +1,33 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background var(--transition-speed) ease;
+    
+    .content-container {
+      padding: 36px 20px;
+      margin-bottom: 0px; // Space for player
+      animation: fadeIn 0.5s ease;
+      
+      main {
+        animation: slideUp 0.5s ease;
+      }
+    }
+    
+    .sidebar-container {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+    }
+    .music-container{
+      padding: 20px;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .player-row {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+  }

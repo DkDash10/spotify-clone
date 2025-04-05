@@ -1,0 +1,420 @@
+.music-player {
+  padding: 4rem 5rem;
+  display: flex;
+  position: sticky;
+  top: 0;
+
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .song-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    
+    .details {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .details-title {
+        margin: 0;
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: 700;
+        color: var(--spotify-white);
+      }
+      
+      .details-artist {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+  
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .song-options {
+      background: #ffffff0f;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+
+      img {
+        transform: translate(0px, -3px);
+      }
+    }
+    
+    .controls {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      
+      .btn {
+        color: var(--spotify-white);
+        opacity: 0.6;
+
+        i {
+          font-size: 18px;
+        }
+      }
+      
+      .play-pause-btn {
+        opacity: 1;
+        i {
+          font-size: 32px;
+        }
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .progress-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      
+      .time {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        width: 35px;
+        text-align: center;
+      }
+      
+      .song-progress {
+        flex: 1;
+        height: 4px;
+        margin: 1rem 0;
+        cursor: pointer;
+        
+        .progress-bar {
+          background-color: var(--spotify-green);
+        }
+        
+        &:hover .progress-bar {
+          background-color: #1ED760;
+        }
+      }
+    }
+  }
+  
+  .volume-container {
+    display: flex;
+    
+    i {
+      color: var(--spotify-white);
+    }
+    
+    .volume-slider {
+      width: 100px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      outline: none;
+      
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--spotify-white);
+        cursor: pointer;
+      }
+    }
+  }
+  
+  &.empty-player {
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+
+    p {
+      margin: 0;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .song-info {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 1100px) {
+    padding: 4rem 2rem;
+    
+    .thumbnail {
+      border-radius: 8px;
+      object-fit: cover;
+      aspect-ratio: 3/2;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    padding: 0;
+  }
+  
+  // Hide desktop player on mobile
+  @media (max-width: 768px) {
+    &.desktop-player {
+      display: none;
+    }
+  }
+}
+
+// Mini Music Player (mobile only)
+.mini-music-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(18, 18, 18, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  height: 64px;
+  
+  // Progress bar positioned at the top of mini player
+  .mini-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    
+    .mini-progress-bar {
+      height: 2px;
+      border-radius: 0;
+      
+      .progress-bar {
+        background-color: var(--spotify-green);
+      }
+    }
+  }
+  
+  .mini-thumbnail {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .mini-details {
+    flex: 1;
+    overflow: hidden;
+    
+    .mini-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--spotify-white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .mini-artist {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .mini-controls {
+    display: flex;
+    align-items: center;
+    
+    .btn {
+      padding: 0;
+      color: var(--spotify-white);
+      margin-left: 12px;
+      
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+  
+  // Hide on desktop
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+// Expanded Music Player (mobile fullscreen)
+.expanded-music-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(40, 40, 40, 0.9), rgba(18, 18, 18, 1));
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  animation: slideUp 0.3s ease;
+  
+  .player-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    
+    .close-btn {
+      color: var(--spotify-white);
+      padding: 8px;
+      
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .player-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .expanded-thumbnail {
+    width: 70%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .expanded-details {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+    
+    .expanded-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--spotify-white);
+      margin-bottom: 8px;
+    }
+    
+    .expanded-artist {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+  }
+  
+  .progress-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    
+    .time {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      width: 40px;
+    }
+    
+    .song-progress {
+      flex: 1;
+      height: 4px;
+      margin: 0 8px;
+      cursor: pointer;
+      
+      .progress-bar {
+        background-color: var(--spotify-green);
+      }
+    }
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    width: 100%;
+    
+    .btn {
+      color: var(--spotify-white);
+      padding: 0 16px;
+      
+      i {
+        font-size: 24px;
+      }
+    }
+    
+    .play-pause-btn {
+      i {
+        font-size: 48px;
+      }
+    }
+  }
+  
+  .additional-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    .song-options {
+      background: #ffffff0f;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      
+      img {
+        transform: translate(0px, -3px);
+      }
+      
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+  
+  // Only show on mobile
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+// Animation for expanded player
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Make sure the music player is hidden on mobile when no song
+@media (max-width: 768px) {
+  .music-player.empty-player {
+    display: none;
+  }
+}

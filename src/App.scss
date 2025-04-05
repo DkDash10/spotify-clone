@@ -1,0 +1,56 @@
+@import 'bootstrap/scss/bootstrap';
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
+
+@font-face {
+  font-family: "Basier Circle";
+  src: local("Basier Circle"),
+    url("../src/assets/font/BasierCircle-Regular/BasierCircle-Regular.woff") format("woff");
+  font-weight: normal;
+}
+
+:root {
+  --spotify-green: #1DB954;
+  --spotify-black: #121212;
+  --spotify-dark-gray: #181818;
+  --spotify-light-gray: #282828;
+  --spotify-white: #FFFFFF;
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Basier Circle";
+  background: linear-gradient(120deg, rgba(33, 43, 62, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  color: var(--spotify-white);
+  overflow-x: hidden;
+}
+.container-fluid{
+  max-width: 1450px;
+}
+.row> * {
+  padding: 0;
+}
+.dropdown-toggle::after{
+  display: none;
+}
+// Animation keyframes
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}

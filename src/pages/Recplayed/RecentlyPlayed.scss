@@ -1,0 +1,17 @@
+.recently-played{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  
+    .home-page-title{
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 36px;
+      margin-bottom: 0;
+    }
+    @media (max-width: 992px) {
+      .home-page-title{ 
+       padding-left: 3rem;
+      }
+    }
+  }
